@@ -1,0 +1,23 @@
+mybatis:
+    configuration:
+        map-underscore-to-camel-case: true
+    mapper-locations: classpath:mappers/*xml
+server:
+    port: 8080
+spring:
+    application:
+        name: store
+    datasource:
+        druid:
+            driver-class-name: com.mysql.cj.jdbc.Driver
+            password: 1234
+            url: jdbc:mysql://localhost:3306/store?serverTimezone=UTC
+            username: root
+    devtools:
+        restart:
+            enabled: true  #设置开启热部署
+            additional-paths: src/main/java #重启目录
+            exclude: WEB-INF/**
+    thymeleaf:
+        cache: false #使用Thymeleaf模板引擎，关闭缓存
+
