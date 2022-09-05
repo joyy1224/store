@@ -45,4 +45,17 @@ public class UserServiceTests {
 //        User user = userMapper.findByUsername("ityue");
 //        System.out.println(user);
 //    }
+    @Test
+    public void getByUid(){
+         System.err.println(userService.getByUid(17));
+    }
+
+    @Test
+    public void changeInfo(){
+        User user = new User();
+        user.setEmail("123@123.com");
+        user.setPhone("123124124");
+        userService.changeInfo(17,"admin",user);
+        System.err.println(12312312);
+    }
 }
