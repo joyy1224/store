@@ -35,4 +35,11 @@ public interface UserMapper {
      * @return
      */
     User findByUid(Integer uid);
+
+    /**
+     * 根据uid 查询
+     * @param uid
+     * @return
+     */
+    Integer updateInfoByUid(User user);
 }

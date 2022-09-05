@@ -1,6 +1,7 @@
 mybatis:
     configuration:
         map-underscore-to-camel-case: true
+        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     mapper-locations: classpath:mappers/*xml
 server:
     port: 8080
@@ -20,4 +21,3 @@ spring:
             exclude: WEB-INF/**
     thymeleaf:
         cache: false #使用Thymeleaf模板引擎，关闭缓存
-

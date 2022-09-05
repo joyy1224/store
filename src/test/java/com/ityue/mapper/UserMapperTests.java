@@ -42,4 +42,12 @@ public class UserMapperTests {
     public void updatebyuid(){
         userMapper.updatePasswordByUid(14,"1234","admin",new Date());
     }
+
+    @Test
+    public void updateInfoByUid(){
+        User user = new User();
+        user.setUid(17);
+        user.setEmail("99999@168.com");
+        userMapper.updateInfoByUid(user);
+    }
 }
