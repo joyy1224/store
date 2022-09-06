@@ -9,10 +9,7 @@ import com.ityue.service.ex.UsernameDuplicatedException;
 import com.ityue.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -27,7 +24,7 @@ public class UserController{
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/reg")
+    @PostMapping("/reg")
     public JsonResult<Void> reg(User user){
         userService.reg(user);
         return new JsonResult<>(OK,"注册成功！");
@@ -43,12 +40,25 @@ public class UserController{
         return new JsonResult<User>(OK,login);
     }
 
-    @RequestMapping("/change_password")
+    @PostMapping("/change_password")
     public JsonResult<Void> changePassword(String oldPassword,String newPassword,HttpSession session){
         Integer uidFromSession = getUidFromSession(session);
         String userFromSession = getUserFromSession(session);
         userService.changePassword(uidFromSession,userFromSession,oldPassword,newPassword);
         session.removeAttribute("uid");
+        return new JsonResult<>(OK);
+    }
+
+
+    @PostMapping("/get_by_uid")
+    public JsonResult<User> getByUid(HttpSession session){
+        User user = userService.getByUid(getUidFromSession(session));
+        return new JsonResult<>(OK,user);
+    }
+
+    @GetMapping("/change_Info")
+    public JsonResult<Void> changeInfo(User user,HttpSession session){
+        userService.changeInfo(getUidFromSession(session),getUserFromSession(session),user);
         return new JsonResult<>(OK);
     }
 
