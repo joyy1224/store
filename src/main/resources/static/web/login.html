@@ -47,7 +47,7 @@
 					<div class="form-group">
 						<label for="password" class="col-md-3 control-label"> 密码：</label>
 						<div class="col-md-8">
-							<input name="password" type="text" class="form-control" id="password"  placeholder="请输入密码">
+							<input name="password" type="password" class="form-control" id="password"  placeholder="请输入密码">
 						</div>
 					</div>
 					<!-- 记住我-->
@@ -156,6 +156,7 @@
 						console.log(json.data);
 						alert("登录成功！");
 						location.href = "index.html";
+						$.cookie("avatar",json.data.avatar,{expire: 7});
 					}else {
 						alert("登录失败！")
 					}

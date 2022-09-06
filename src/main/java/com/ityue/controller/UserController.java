@@ -10,6 +10,7 @@ import com.ityue.service.ex.UsernameDuplicatedException;
 import com.ityue.util.JsonResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -33,6 +34,9 @@ public class UserController{
 
     @Autowired
     private UserService userService;
+
+//    @Value("${store.path}")
+//    private String realPath;
 
     @PostMapping("/reg")
     public JsonResult<Void> reg(User user){
@@ -74,6 +78,7 @@ public class UserController{
 
     @PostMapping("/change_avatar")
     public JsonResult<String> changeAvatar(HttpSession session, @RequestParam("file") MultipartFile file){
+
         if (file.isEmpty()){
             throw new FileEmptyException("文件为空！");
         }
@@ -108,7 +113,9 @@ public class UserController{
         String username = getUserFromSession(session);
         String avatar = "/upload/"+filename;
         userService.updateAvatarByUid(uid,avatar,username);
-        return new JsonResult<>(OK,avatar);
+        JsonResult<String> result = new JsonResult<>(OK);
+        result.setData(avatar);
+        return result;
     }
 
     public static final int AVATAR_MAX_SIZE = 10 *1024 *1024;
