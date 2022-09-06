@@ -35,6 +35,13 @@ modified_time) values (#{username},#{password},#{salt},#{phone},#{email},#{gende
                           modified_time = #{modifiedTime}
                         where uid = #{uid}
     </update>
+    <update id="updateAvatarByUid">
+        update t_user set
+        avatar = #{avatar},
+        modified_user = #{modifiedUser},
+        modified_time = #{modifiedTime}
+        where uid = #{uid}
+    </update>
 
     <select id="findByUsername" resultMap="UserMap">
         select * from t_user where username = #{username}

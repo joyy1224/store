@@ -21,3 +21,9 @@ spring:
             exclude: WEB-INF/**
     thymeleaf:
         cache: false #使用Thymeleaf模板引擎，关闭缓存
+    servlet:
+        multipart:
+            enabled: true
+            max-file-size: 10MB
+            max-request-size: 15MB
+

@@ -3,11 +3,16 @@ package com.ityue.service;
 
 import com.ityue.entity.User;
 import com.ityue.mapper.UserMapper;
+import org.apache.ibatis.annotations.Param;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.util.Date;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -45,4 +50,31 @@ public class UserServiceTests {
 //        User user = userMapper.findByUsername("ityue");
 //        System.out.println(user);
 //    }
+    @Test
+    public void getByUid(){
+         System.err.println(userService.getByUid(17));
+    }
+
+    @Test
+    public void changeInfo(){
+        User user = new User();
+        user.setEmail("123@123.com");
+        user.setPhone("123124124");
+        userService.changeInfo(17,"admin",user);
+        System.err.println(12312312);
+    }
+    @Test
+    public void updateAvatarByUid() {
+        userService.updateAvatarByUid(17,"qweqwe","dadasdas");
+    }
+    @Test
+    public void updateAvatarByUid1() {
+        File file = new File("c:\\users\\program.JPG");
+        String name = file.getName();
+        System.out.println(name);
+        int i = name.indexOf(".");
+        System.out.println(i);
+        String substring = name.substring(i);
+        System.out.println(substring);
+    }
 }

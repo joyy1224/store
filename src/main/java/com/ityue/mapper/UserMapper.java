@@ -42,4 +42,15 @@ public interface UserMapper {
      * @return
      */
     Integer updateInfoByUid(User user);
+
+    /**
+     * 根据uid修改头像
+     * @param uid
+     * @param avatar
+     * @param modifiedUser
+     * @param modifiedTime
+     * @return
+     */
+    Integer updateAvatarByUid(@Param("uid") Integer uid,@Param("avatar") String avatar,
+                              @Param("modifiedUser")String modifiedUser, @Param("modifiedTime")Date modifiedTime);
 }

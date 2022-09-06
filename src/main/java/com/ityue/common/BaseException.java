@@ -1,6 +1,7 @@
 package com.ityue.common;
 
 
+import com.ityue.controller.ex.*;
 import com.ityue.service.ex.*;
 import com.ityue.util.JsonResult;
 import lombok.extern.slf4j.Slf4j;
@@ -16,8 +17,8 @@ public class BaseException {
 
     public static final Integer OK = 200;
 
-    @ExceptionHandler(ServiceException.class)
-    public JsonResult<Void> exceptionHandler(ServiceException e){
+    @ExceptionHandler({ServiceException.class,FileUploadException.class})
+    public JsonResult<Void> exceptionHandler(Exception e){
         JsonResult<Void> result = new JsonResult<>(e);
         if (e instanceof UsernameDuplicatedException){
             result.setState(4000);
@@ -29,6 +30,16 @@ public class BaseException {
             result.setState(5000);
         }else if (e instanceof UpdateException){
             result.setState(5001);
+        }else if (e instanceof FileEmptyException){
+            result.setState(6000);
+        }else if (e instanceof FileSizeException){
+            result.setState(6001);
+        }else if (e instanceof FileStateException){
+            result.setState(6002);
+        }else if (e instanceof FiletypeException){
+            result.setState(6003);
+        }else if (e instanceof FileUploadIOException){
+            result.setState(6004);
         }
         return result;
     }

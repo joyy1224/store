@@ -47,7 +47,12 @@ public class UserMapperTests {
     public void updateInfoByUid(){
         User user = new User();
         user.setUid(17);
-        user.setEmail("99999@168.com");
+        user.setEmail("999919@168.com");
         userMapper.updateInfoByUid(user);
+    }
+
+    @Test
+    public void updateAvatarByUid(){
+        userMapper.updateAvatarByUid(17,"123","管理员",new Date());
     }
 }
