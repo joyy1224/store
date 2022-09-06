@@ -262,6 +262,50 @@
 			</div>
 		</footer>
 		<!--页脚结束-->
+
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$.ajax({
+					url:"/users/get_by_uid",
+					type:"POST",
+					// data:$("#form-change-info").serialize(),
+					dataType:"JSON",
+					success:function (json) {
+						if (json.state == 200){
+							$("#username").val(json.data.username);
+							$("#phone").val(json.data.phone);
+							$("#email").val(json.data.email);
+							let  redio= json.data.gender == 0 ? $("#gender-female") : $("#gender-male");
+							redio.prop("checked","checked");
+						}else {
+							alert("回显数据失败")
+						}
+					},
+					error:function (xhr){
+						alert("数据产生未知的异常" + xhr.message);
+					}
+				});
+			}),
+					$("#btn-change-info").click(function () {
+						$.ajax({
+							url:"/users/change_Info",
+							type:"GET",
+							data:$("#form-change-info").serialize(),
+							dataType:"JSON",
+							success:function (json) {
+								if (json.state == 200){
+									alert("修改成功！")
+									location.href = "userdata.html";
+								}else {
+									alert("修改失败！")
+								}
+							},
+							error:function (xhr){
+								alert("修改时产生未知的异常" + xhr.message);
+							}
+						});
+					});
+		</script>
 	</body>
 
 </html>
