@@ -1,6 +1,8 @@
 package com.ityue.mapper;
 
 
+import com.ityue.entity.Address;
+
 /**
 * @author ASUS
 * @description 针对表【t_address】的数据库操作Mapper
@@ -9,4 +11,7 @@ package com.ityue.mapper;
 */
 public interface AddressMapper {
 
+    Integer insert(Address address);
+
+    Integer countByUid(Integer uid);
 }

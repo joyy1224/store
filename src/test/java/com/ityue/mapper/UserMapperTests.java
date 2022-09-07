@@ -55,4 +55,5 @@ public class UserMapperTests {
     public void updateAvatarByUid(){
         userMapper.updateAvatarByUid(17,"123","管理员",new Date());
     }
+
 }

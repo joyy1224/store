@@ -16,7 +16,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Address implements Serializable {
+public class Address extends BeseEntity implements Serializable {
     /**
      * 收货地址id
      */
@@ -91,26 +91,6 @@ public class Address implements Serializable {
      * 是否默认：0-不默认，1-默认
      */
     private Integer isDefault;
-
-    /**
-     * 创建人
-     */
-    private String createdUser;
-
-    /**
-     * 创建时间
-     */
-    private Date createdTime;
-
-    /**
-     * 修改人
-     */
-    private String modifiedUser;
-
-    /**
-     * 修改时间
-     */
-    private Date modifiedTime;
 
     private static final long serialVersionUID = 1L;
 
