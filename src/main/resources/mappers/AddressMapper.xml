@@ -25,5 +25,4 @@
             <result property="modifiedUser" column="modified_user" jdbcType="VARCHAR"/>
             <result property="modifiedTime" column="modified_time" jdbcType="TIMESTAMP"/>
     </resultMap>
-
 </mapper>

@@ -1,7 +1,5 @@
 package com.ityue.mapper;
 
-import com.ityue.entity.Address;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**
 * @author ASUS
@@ -10,6 +8,5 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
 * @Entity com.ityue.entity.Address
 */
 public interface AddressMapper {
-
 
 }
