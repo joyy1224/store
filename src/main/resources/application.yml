@@ -27,4 +27,7 @@ spring:
             max-file-size: 10MB
             max-request-size: 15MB
 store:
-    path: E:\storeImages\
+    path: E:\springboot\store\src\main\resources\static\upload
+user:
+    address:
+        max-count: 20

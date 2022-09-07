@@ -25,18 +25,18 @@ import java.util.UUID;
 
 import static com.ityue.common.BaseException.OK;
 
-//@Controller
+//@AddressController
 @Slf4j
 @RestController
 @RequestMapping("/users")
-public class UserController{
+public class UserController extends BaseController{
 
 
     @Autowired
     private UserService userService;
 
-//    @Value("${store.path}")
-//    private String realPath;
+    @Value("${store.path}")
+    private String realPath;
 
     @PostMapping("/reg")
     public JsonResult<Void> reg(User user){
@@ -91,7 +91,7 @@ public class UserController{
         if (!AVATAR_TYPE.contains(contentType)){
             throw new FiletypeException("文件类型错误");
         }
-        String realPath = session.getServletContext().getRealPath("/upload");
+//        String realPath = session.getServletContext().getRealPath("/upload");
         File dir = new File(realPath);
         if (!dir.exists()){
             dir.mkdirs();
@@ -118,23 +118,4 @@ public class UserController{
         return result;
     }
 
-    public static final int AVATAR_MAX_SIZE = 10 *1024 *1024;
-
-    public static final List<String> AVATAR_TYPE = new ArrayList<>();
-
-    static {
-        AVATAR_TYPE.add("image/jpeg");
-        AVATAR_TYPE.add("image/png");
-        AVATAR_TYPE.add("image/bmp");
-        AVATAR_TYPE.add("image/gif");
-    }
-
-    protected final Integer getUidFromSession(HttpSession httpSession){
-        Integer uid = Integer.valueOf(httpSession.getAttribute("uid").toString());
-        return uid;
-    }
-
-    protected final String getUserFromSession(HttpSession httpSession) {
-        return httpSession.getAttribute("username").toString();
-    }
 }

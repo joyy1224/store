@@ -22,6 +22,8 @@ public class BaseException {
         JsonResult<Void> result = new JsonResult<>(e);
         if (e instanceof UsernameDuplicatedException){
             result.setState(4000);
+        }else if (e instanceof AddressCountLimitException){
+            result.setState(4001);
         }else if (e instanceof UserNotException){
             result.setState(5001);
         }else if (e instanceof PasswordNotMatchException){
