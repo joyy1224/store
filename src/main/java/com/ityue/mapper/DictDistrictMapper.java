@@ -1,7 +1,8 @@
 package com.ityue.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import generator.DictDistrict;
+import com.ityue.entity.DictDistrict;
+
+import java.util.List;
 
 /**
 * @author ASUS
@@ -10,7 +11,7 @@ import generator.DictDistrict;
 * @Entity generator.DictDistrict
 */
 public interface DictDistrictMapper {
-
+    List<DictDistrict> findByParent(String parent);
 }
 
 

@@ -1,6 +1,6 @@
 package com.ityue.entity;
 
-import lombok.Data;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -9,6 +9,10 @@ import java.io.Serializable;
  * @TableName t_dict_district
  */
 @Data
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class DictDistrict extends BeseEntity implements Serializable {
     /**
      * 

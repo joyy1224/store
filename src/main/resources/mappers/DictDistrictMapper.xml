@@ -10,5 +10,8 @@
             <result property="code" column="code" jdbcType="VARCHAR"/>
             <result property="name" column="name" jdbcType="VARCHAR"/>
     </resultMap>
+    <select id="findByParent" resultType="com.ityue.entity.DictDistrict">
+        select * from t_dict_district where parent = #{parent} order by code asc;
+    </select>
 
 </mapper>
